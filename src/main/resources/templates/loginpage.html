@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form class="form-horizontal" action="#" th:action="@{/processlogin}"
+      th:object="${log}"  method="post">
+
+    username <input type="text" th:field="*{username}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span><br/>
+
+    Password <input type="password" th:field="*{password}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span><br/>
+
+    <br/>
+
+    <button id="submit" name="submit" class="btn btn-success">Submit</button>
+</form>
+</body>
+</html>
