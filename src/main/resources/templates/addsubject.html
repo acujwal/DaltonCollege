@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form class="form-horizontal" action="#" th:action="@{/processSubject}"
+      th:object="${addsub}"  method="post">
+
+   Major:  <select th:field="*{major}" class="form-control input-md">
+
+    <table>
+        <tr th:each="option: ${options}">
+            <option th:value="${option.id}">[[${option.name}]]</option>
+        </tr>
+    </table>
+</select>
+
+   Subject :  <input type="text" th:field="*{name}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br/>
+
+    <button id="submit" name="submit" class="btn btn-success">Submit</button>
+
+</form>
+
+
+
+</body>
+</html>

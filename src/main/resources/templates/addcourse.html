@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.orgLinks to an external site.">
+<head>
+    <meta charset="UTF-8">
+    <title>Instructor</title>
+</head>
+<body>
+
+<h2>Add A Major</h2>
+
+<form class="form-horizontal" action="#" th:action="@{/processCourse}"
+      th:object="${addcourse}"  method="post">
+
+    Subject:  <select th:field="*{subject}" class="form-control input-md">
+
+    <table>
+        <tr th:each="option: ${options}">
+            <option th:value="${option.id}">[[${option.name}]]</option>
+        </tr>
+    </table>
+</select>
+
+    Name of Course:  <input type="text" th:field="*{name}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br/>
+
+    Course Description:  <input type="text" th:field="*{description}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span><br/>
+
+    Course Credit:  <input type="text" th:field="*{credit}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('credit')}" th:errors="*{credit}"></span><br/>
+
+    Course Number:  <input type="text" th:field="*{course_no}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('course_no')}" th:errors="*{course_no}"></span><br/>
+
+
+    <button id="submit" name="submit" class="btn btn-success">Submit</button>
+
+</form>
+
+
+</body>
+</html>

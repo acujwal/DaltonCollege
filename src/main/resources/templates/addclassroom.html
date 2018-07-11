@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>class</title>
+</head>
+<body>
+
+
+
+<h2>Add A Class Room</h2>
+
+<form class="form-horizontal" action="#" th:action="@{/processClassroom}"
+      th:object="${classroom}"  method="post">
+
+
+    Room Number:  <input type="text" th:field="*{room_no}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('room_no')}" th:errors="*{room_no}"></span><br/>
+
+    Capacity:  <input type="text" th:field="*{capacity}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}"></span><br/>
+
+    Building Name:  <input type="text" th:field="*{building_name}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('building_name')}" th:errors="*{building_name}"></span><br/>
+
+    <button id="submit" name="submit" class="btn btn-success">Submit</button>
+
+</form>
+
+</body>
+</html>
