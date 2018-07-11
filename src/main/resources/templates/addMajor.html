@@ -11,6 +11,10 @@
 <form class="form-horizontal" action="#" th:action="@{/processMajor}"
       th:object="${addMajor}"  method="post">
 
+
+    <ul th:each="co: ${options}">
+        <li th:value="${co.id}">[[${co.name}]]</li>
+    </ul>
     Department :  <select th:field="*{department}" class="form-control input-md">
 
     <table>
@@ -24,6 +28,8 @@
     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br/>
 
     <button id="submit" name="submit" class="btn btn-success">Submit</button>
+
+    <a href="/addsubject">add a subject</a><br>
 
 </form>
 

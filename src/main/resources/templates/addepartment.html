@@ -9,13 +9,20 @@
 <h2>Welcome Admin</h2>
 <h2>Add A Department</h2>
 
+
+<ul th:each="co: ${dept}">
+    <li th:value="${co.id}">[[${co.name}]]</li>
+</ul>
+
+
 <form class="form-horizontal" action="#" th:action="@{/processdepartment}"
       th:object="${addDept}"  method="post">
 
 Department <input type="text" th:field="*{name}" class="form-control input-md" required=""/>
 <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br/>
 
-    <button id="submit" name="submit" class="btn btn-success">Submit</button>
+    <button id="submit" name="submit" class="btn btn-success">Submit</button><br/>
+    <a href="/addMajor">add a major</a><br>
 
 </form>
 

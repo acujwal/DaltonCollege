@@ -12,6 +12,7 @@ public class CourseClass {
     private String crn_number;
     private String day;
     private String time;
+    private String semester;
 
 
     @ManyToOne (fetch = FetchType.EAGER)
@@ -25,7 +26,6 @@ public class CourseClass {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "course_id")
     private Course course;
-    private String semester;
 
     public String getSemester() {
         return semester;

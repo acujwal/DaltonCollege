@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+</head>
+<body>
+
+<h2>Add A Instructor</h2>
+
+<form class="form-horizontal" action="#" th:action="@{/processinstructor}"
+      th:object="${instructor}"  method="post">
+
+
+    Employee Number:  <input type="text" th:field="*{employee_no}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('employee_no')}" th:errors="*{employee_no}"></span><br/>
+
+    Name:  <input type="text" th:field="*{name}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br/>
+
+    Office Number:  <input type="text" th:field="*{office_no}" class="form-control input-md" required=""/>
+    <span th:if="${#fields.hasErrors('office_no')}" th:errors="*{office_no}"></span><br/>
+
+
+    Department :  <select th:field="*{department}" class="form-control input-md">
+
+    <table>
+        <tr th:each="option: ${options}">
+            <option th:value="${option.id}">[[${option.name}]]</option>
+        </tr>
+    </table>
+</select>
+
+    <button id="submit" name="submit" class="btn btn-success">Submit</button>
+
+</form>
+
+
+
+</body>
+</html>

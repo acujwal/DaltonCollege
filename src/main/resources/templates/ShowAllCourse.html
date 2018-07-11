@@ -6,5 +6,12 @@
 </head>
 <body>
 
+<ul th:each="co: ${cou}">
+    <li> [[${co.id}]] -  [[${co.crn_number}]]- [[${co.day}]]-[[${co.semester}]]
+
+        [[${co.course}]]-[[${co.classroom}]]</li>
+</ul>
+
+
 </body>
 </html>

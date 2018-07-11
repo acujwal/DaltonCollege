@@ -34,10 +34,16 @@ public class HomeController {
     SubjectRepository subjectRepository;
 
     @Autowired
+    InstructorRepository instructorRepository;
+
+    @Autowired
     CourseRepository courseRepository;
 
     @Autowired
     ClassroomRepository classroomRepository;
+
+    @Autowired
+    ClassRepository classRepository;
 //this will lead to main page
     @RequestMapping("/")
     public String home(Model model) {
@@ -53,6 +59,7 @@ public class HomeController {
 
     @GetMapping("/addepartment")
     public String adminAdd(Model model) {
+        model.addAttribute("dept", departmentRepository.findAll());
         model.addAttribute("addDept", new Department());
         return "addepartment";
     }
@@ -87,6 +94,22 @@ public class HomeController {
         return "addclassroom";
         }
 
+    @GetMapping("/addinstructor")
+    public String addInst(Model model){
+        model.addAttribute("options", departmentRepository.findAll());
+        model.addAttribute("instructor", new Instructor());
+        return "addInstructor";
+    }
+
+    @GetMapping("/addcourseclass")
+    public String addcourseclass(Model model){
+        model.addAttribute("ins", instructorRepository.findAll());
+        model.addAttribute("cou", courseRepository.findAll());
+        model.addAttribute("room", classroomRepository.findAll());
+        model.addAttribute("addclass", new CourseClass());
+        return "addcourseclass";
+    }
+
     @PostMapping("/processSignUp")
     public String processSignUp(@ModelAttribute("login") Login login){
 
@@ -97,13 +120,13 @@ public class HomeController {
     @PostMapping("/processdepartment")
     public String processdept(@ModelAttribute("department") Department department){
         departmentRepository.save(department);
-        return "redirect:/addMajor";
+        return "redirect:/addepartment";
     }
 
     @PostMapping("/processMajor")
     public String processdept(@ModelAttribute("major") Major major){
         majorRepository.save(major);
-        return "redirect:/addsubject";
+        return "redirect:/addMajor";
     }
 
     @PostMapping("/processSubject")
@@ -122,11 +145,32 @@ public class HomeController {
         return "test";
     }
 
+    @PostMapping("/processinstructor")
+    public String processIns(@ModelAttribute("instructor") Instructor instructor){
+        instructorRepository.save(instructor);
+        return "test";
+    }
+
 
     @GetMapping("/login")
     public String loginform(Model model) {
         model.addAttribute("log", new Login());
         return "loginpage";
+    }
+
+    @GetMapping("/showallcourse")
+    public String ShowAll(Model model) {
+        model.addAttribute("ins", instructorRepository.findAll());
+        model.addAttribute("course", courseRepository.findAll());
+        model.addAttribute("room", classroomRepository.findAll());
+        model.addAttribute("cou", classRepository.findAll());
+        return "ShowAllCourse";
+    }
+
+    @PostMapping("/processclass")
+    public String processCourse(@ModelAttribute("courseclass") CourseClass courseClass) {
+        classRepository.save(courseClass);
+        return "test";
     }
 
 
