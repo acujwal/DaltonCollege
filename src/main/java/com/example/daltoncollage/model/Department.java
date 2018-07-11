@@ -5,6 +5,22 @@ import java.util.Set;
 
 @Entity
 public class Department {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = "department",
+            cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public Set<Major>majors;
+
+
+    @OneToMany (mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public Set<Instructor>instructors;
+
+
     public long getId() {
         return id;
     }
@@ -21,18 +37,6 @@ public class Department {
         this.name = name;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-    private String name;
-
-
-
-
-    @OneToMany (mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    public Set<Instructor>instructors;
-
     public Set<Instructor> getInstructors() {
         return instructors;
     }
@@ -41,9 +45,6 @@ public class Department {
         this.instructors = instructors;
     }
 
-    @OneToMany(mappedBy = "department",
-    cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    public Set<Major>majors;
 
     public Set<Major> getMajors() {
         return majors;

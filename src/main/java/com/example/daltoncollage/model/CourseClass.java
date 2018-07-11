@@ -16,7 +16,7 @@ public class CourseClass {
 
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn (name = "instructor_id")
-    private CourseClass courseClass;
+    private Instructor instructor;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "classroom_id")
@@ -25,7 +25,15 @@ public class CourseClass {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "course_id")
     private Course course;
+    private String semester;
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
 
     public Classroom getClassroom() {
         return classroom;
@@ -35,12 +43,12 @@ public class CourseClass {
         this.classroom = classroom;
     }
 
-    public CourseClass getCourseClass() {
-        return courseClass;
+    public Instructor getInstructor() {
+        return instructor;
     }
 
-    public void setCourseClass(CourseClass courseClass) {
-        this.courseClass = courseClass;
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 
     public Course getCourse() {

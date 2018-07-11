@@ -14,7 +14,13 @@
     Password <input type="password" th:field="*{password}" class="form-control input-md" required=""/>
     <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span><br/>
 
+    User_type <select th:field="*{user_type}" class="form-control input-md">
+    <option value="Student">Student</option>
+    <option value="Instructor">Instructor</option>
+</select>
+    <span th:if="${#fields.hasErrors('user_type')}" th:errors="*{user_type}"></span><br/>
     <br/>
+
 
     <button id="submit" name="submit" class="btn btn-success">Submit</button>
 </form>

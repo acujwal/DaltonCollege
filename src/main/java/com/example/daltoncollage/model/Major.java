@@ -12,9 +12,7 @@ public class Major {
 
     private String name;
 
-
-
-    @OneToMany (mappedBy = "mojor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany (mappedBy = "major", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Subject> subjects;
 
     @ManyToOne (fetch = FetchType.EAGER)

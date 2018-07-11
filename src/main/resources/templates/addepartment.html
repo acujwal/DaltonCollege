@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.orgLinks to an external site.">
+<head>
+    <meta charset="UTF-8">
+    <title>Instructor</title>
+</head>
+<body>
+
+<h2>Welcome Admin</h2>
+<h2>Add A Department</h2>
+
+<form class="form-horizontal" action="#" th:action="@{/processdepartment}"
+      th:object="${addDept}"  method="post">
+
+Department <input type="text" th:field="*{name}" class="form-control input-md" required=""/>
+<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br/>
+
+    <button id="submit" name="submit" class="btn btn-success">Submit</button>
+
+</form>
+
+
+</body>
+</html>
