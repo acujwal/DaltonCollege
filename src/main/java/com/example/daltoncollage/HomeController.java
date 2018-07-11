@@ -137,18 +137,18 @@ public class HomeController {
     @PostMapping("/processCourse")
     public String processCourse(@ModelAttribute("course") Course course){
         courseRepository.save(course);
-        return "test";
+        return "addcourseclass";
     }
     @PostMapping("/processClassroom")
     public String processClassroom(@ModelAttribute("classroom") Classroom classroom){
         classroomRepository.save(classroom);
-        return "test";
+        return "index";
     }
 
     @PostMapping("/processinstructor")
     public String processIns(@ModelAttribute("instructor") Instructor instructor){
         instructorRepository.save(instructor);
-        return "test";
+        return "index";
     }
 
 
@@ -170,11 +170,8 @@ public class HomeController {
     @PostMapping("/processclass")
     public String processCourse(@ModelAttribute("courseclass") CourseClass courseClass) {
         classRepository.save(courseClass);
-        return "test";
+        return "index";
     }
-
-
-
 
     @PostMapping("/processlogin")
     public String login(HttpServletRequest request, Model model) {
